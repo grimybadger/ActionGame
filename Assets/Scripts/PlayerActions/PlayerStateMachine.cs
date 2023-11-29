@@ -38,7 +38,7 @@ public class PlayerStateMachine : MonoBehaviour
     }
 
     
-    private void Update()
+    private void LateUpdate()
     {
 
         if (_mchainAttack)

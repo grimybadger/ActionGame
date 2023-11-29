@@ -4964,7 +4964,6 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194230}
-  - component: {fileID: 963194231}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5069,21 +5068,6 @@ MonoBehaviour:
   <RotationAroundTarget>k__BackingField: 0
   <ElevationToTarget>k__BackingField: 0
   <Offset>k__BackingField: {x: 0, y: 1.2, z: 0.2}
---- !u!114 &963194231
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1bdb08855442f84eadb891bcd6442e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Camera>k__BackingField: {fileID: 963194227}
-  <Player>k__BackingField: {fileID: 8310868103962022856}
-  <Offset>k__BackingField: {x: 0, y: 0, z: 0}
 --- !u!1001 &970830304
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9433,6 +9417,7 @@ MonoBehaviour:
   <MoveSpeed>k__BackingField: 2
   <ObjectDetection>k__BackingField: {fileID: 1633589620}
   <IsMoving>k__BackingField: 0
+  <RandomInt>k__BackingField: 0
 --- !u!114 &1633589628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10039,6 +10024,7 @@ MonoBehaviour:
   <MoveSpeed>k__BackingField: 2
   <ObjectDetection>k__BackingField: {fileID: 1744086023}
   <IsMoving>k__BackingField: 0
+  <RandomInt>k__BackingField: 0
 --- !u!114 &1744086033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10871,6 +10857,7 @@ MonoBehaviour:
   <MoveSpeed>k__BackingField: 2
   <ObjectDetection>k__BackingField: {fileID: 1925712650}
   <IsMoving>k__BackingField: 0
+  <RandomInt>k__BackingField: 0
 --- !u!114 &1925712658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11982,6 +11969,7 @@ MonoBehaviour:
   <MoveSpeed>k__BackingField: 2
   <ObjectDetection>k__BackingField: {fileID: 2082661840}
   <IsMoving>k__BackingField: 0
+  <RandomInt>k__BackingField: 0
 --- !u!114 &2082661848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12422,6 +12410,7 @@ MonoBehaviour:
   <MoveSpeed>k__BackingField: 2
   <ObjectDetection>k__BackingField: {fileID: 2122001318}
   <IsMoving>k__BackingField: 0
+  <RandomInt>k__BackingField: 0
 --- !u!114 &2122001326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12950,6 +12939,7 @@ MonoBehaviour:
   <MoveSpeed>k__BackingField: 2
   <ObjectDetection>k__BackingField: {fileID: 2147383355}
   <IsMoving>k__BackingField: 0
+  <RandomInt>k__BackingField: 0
 --- !u!114 &2147383363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13298,7 +13288,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8310868103962022856}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 1b356e0abc8b68d40b4ab20a5b0133a9, type: 2}
+  m_Avatar: {fileID: 9000000, guid: 5ae02fce3fd08f140888c4d8f1f2cfc3, type: 3}
   m_Controller: {fileID: 9100000, guid: 5fc85cd68ae9250409ac7a643b39a7ca, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
@@ -15899,7 +15889,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8310868103961530280}
   - component: {fileID: 8310868103954604520}
-  - component: {fileID: 8310868103962022857}
   - component: {fileID: 8310868103962022858}
   - component: {fileID: 8310868103962022859}
   - component: {fileID: 8310868103962022860}
@@ -15915,32 +15904,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!143 &8310868103962022857
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8310868103962022856}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 0
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &8310868103962022858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15954,7 +15917,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <CharacterType>k__BackingField: 0
-  <MoveSpeed>k__BackingField: 3
+  <MoveSpeed>k__BackingField: 0
   <JumpHeight>k__BackingField: 2
   <Gravity>k__BackingField: 20
   <AirControl>k__BackingField: 5

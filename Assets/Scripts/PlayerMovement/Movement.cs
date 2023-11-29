@@ -25,7 +25,7 @@ public class Movement : MonoBehaviour
     {
 
 
-
+        /*
         var input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         input *= MoveSpeed;
         input = transform.TransformDirection(input);
@@ -49,7 +49,7 @@ public class Movement : MonoBehaviour
         }
         _moveDirection.y -= Gravity * Time.deltaTime;
         _controller.Move(_moveDirection * Time.deltaTime);
-
+*/
     }
 
 }

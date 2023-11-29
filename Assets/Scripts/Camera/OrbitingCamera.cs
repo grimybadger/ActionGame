@@ -34,7 +34,7 @@ public class OrbitingCamera : MonoBehaviour
         }
     }
 
-    private void LateUpdate() 
+    private void Update() 
    
     {
 
