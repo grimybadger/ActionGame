@@ -74,6 +74,7 @@ public class StateMachine
         if (currentState.onFrame != null)
         {
             currentState.onFrame();
+           // Debug.Log("Running OnFrame");
         }
     }
 

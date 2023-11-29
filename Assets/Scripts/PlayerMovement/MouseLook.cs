@@ -17,7 +17,7 @@ public class MouseLook : MonoBehaviour
         _bodyStartOrientation = transform.localRotation;
     }
     
-        private void Update()
+        private void LateUpdate()
         {
 
         // var horizontal = Input.GetAxis("Mouse X") * Time.deltaTime * TurnSpeed;
@@ -32,8 +32,10 @@ public class MouseLook : MonoBehaviour
        /// transform.Translate(movementDirection* 1f * Time.deltaTime,Space.World);
         if (movementDirection != Vector3.zero)
         {
-            Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
-           Quaternion a = Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0);
+            //Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
+            // Quaternion toRotation = Quaternion.LookRotation(Camera.main.transform.forward, Vector3.up);
+            float y = Camera.main.transform.eulerAngles.y;
+           Quaternion a = Quaternion.Euler(0, y, 0);
   
             transform.rotation = Quaternion.RotateTowards(transform.rotation, a, 750f * Time.deltaTime);
         }

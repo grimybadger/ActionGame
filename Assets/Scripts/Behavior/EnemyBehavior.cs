@@ -17,6 +17,8 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] private float _threatTimer;
     [SerializeField] Transform target;
     [SerializeField] private bool _isTargetAThreat;
+    [SerializeField] private bool _isTargetInRange;
+    [SerializeField] private float _targetDistance = 0;
 
     [Space(10)]
     [Header("Target Movement")]
@@ -27,6 +29,9 @@ public class EnemyBehavior : MonoBehaviour
     // [SerializeField] private EnemyVisibility _enemyVisibility;
     [field: SerializeField] public Animator Animator { get; private set; }
     // [SerializeField] private Firearm _firearm;
+    [field: SerializeField] public bool IsAttacking { get; private set; }
+
+    [SerializeField] private List<string> _attacks;
 
 
     private bool _isAiming;
@@ -57,31 +62,48 @@ public class EnemyBehavior : MonoBehaviour
 
         // The first state we register will be the initial state
         var idle = _stateMachine.CreateState("idle");
+        var attacking = _stateMachine.CreateState("attacking");
+        var moving = _stateMachine.CreateState("moving");
 
-        // Log when we enter the state
-        idle.onEnter = delegate { Debug.Log("Currently idling"); };
+        idle.onEnter = delegate
+        {
+            Debug.Log("Idiling");
+        };
         idle.onFrame = delegate
         {
-
             if (EnemyMovement.IsMoving)
             {
-                  //_stateMachine.TransitionTo("aiming");
-                  if(EnemyMovement.RandomInt == 1)
-                  {
-                     Animator.SetBool("isWalking", true);
-                  }
-                  else if(EnemyMovement.RandomInt == 2)
-                  {
-                    EnemyMovement.MoveSpeed = 6f;
-                    Animator.SetBool("isRunning", true);
-                  }
-                   
+                _stateMachine.TransitionTo("moving");
             }
-            else if(!EnemyMovement.IsMoving)
+        };
+        idle.onExit = delegate { };
+
+
+        // Log when we enter the state
+        moving.onEnter = delegate { Debug.Log("Currently moving"); };
+        moving.onFrame = delegate
+        {
+            if (EnemyMovement.IsMoving)
+            {
+
+                if (EnemyMovement.RandomInt == 1)
+                {
+                    Animator.SetBool("isWalking", true);
+                }
+                else if (EnemyMovement.RandomInt == 2)
+                {
+                    EnemyMovement.MoveSpeed = 5f;
+                    Animator.SetBool("isRunning", true);
+                }
+
+            }
+            else if (!EnemyMovement.IsMoving)
             {
                 Animator.SetBool("isWalking", false);
                 Animator.SetBool("isRunning", false);
                 EnemyMovement.MoveSpeed = 3f;
+                EnemyMovement._hasDecidedMovement = false;
+                _stateMachine.TransitionTo("attacking");
             }
 
             /*
@@ -109,14 +131,39 @@ public class EnemyBehavior : MonoBehaviour
                     _isAiming = true;
                 }
     */
+
         };
+        moving.onExit = delegate { Debug.Log("Exited Moving"); };
 
-        var aiming = _stateMachine.CreateState("aiming");
 
+        attacking.onEnter = delegate { Debug.Log("Currently Attacking"); };
         // Every Frame, keep the enemy aimed at the target. Detect 
         // when the target leaves range. 
-        aiming.onFrame = delegate
+        attacking.onFrame = delegate
         {
+            if (_isTargetAThreat)
+            {
+                IsAttacking = true;
+                if (IsAttacking)
+                {
+                    _targetDistance = Vector3.Distance(transform.position, target.position);
+                    if (_targetDistance < 5)
+                    {
+                        _isTargetInRange = true;
+                        Animator.Play($"{_attacks[0]}");
+                    }
+                    else if (_targetDistance > 5)
+                    {
+                       // IsAttacking = false;
+                        _isTargetInRange = false;
+                        _stateMachine.TransitionTo("idle");
+                        EnemyMovement.ObjectDetection.DetectedItems.Remove(target.gameObject);
+                        StartCoroutine(EnemyMovement.CheckForMovement());
+                    }
+                    //Animator.Play($"{_attacks[0]}");
+                }
+            }
+
             /*
             transform.LookAt(target.position);
             transform.rotation *= Quaternion.Euler(0, 50, 0);
@@ -141,19 +188,21 @@ public class EnemyBehavior : MonoBehaviour
             }
 */
         };
+        attacking.onExit = delegate { };
 
-        aiming.onEnter = delegate
-        {
+        /*
+                attacking.onEnter = delegate
+                {
 
-            Debug.Log("Target is in range");
-        };
+                    Debug.Log("Target is in range");
+                };
 
-        aiming.onExit = delegate
-        {
+                attacking.onExit = delegate
+                {
 
-            Debug.Log("Target went out of range!");
-        };
-
+                    Debug.Log("Target went out of range!");
+                };
+        */
         /*
         var threat = stateMachine.CreateState("threat"); 
 

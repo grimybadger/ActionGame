@@ -162,7 +162,6 @@ public class ObjectDetection : MonoBehaviour
         }
         return Vector3.up;
     }
-
     #region Properties
     public List <GameObject> DetectedItems
     {

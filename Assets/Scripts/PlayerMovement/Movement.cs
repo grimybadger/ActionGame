@@ -21,17 +21,17 @@ public class Movement : MonoBehaviour
     {
         _controller = GetComponent<CharacterController>();
     }
-    private void Update()
+    private void FixedUpdate()
     {
 
 
-        /*
+        
         var input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         input *= MoveSpeed;
         input = transform.TransformDirection(input);
 
         if (_controller.isGrounded)
-        {
+       {
             _moveDirection = input;
             if (Input.GetButton("Jump"))
             {
@@ -41,7 +41,7 @@ public class Movement : MonoBehaviour
             {
                 _moveDirection.y = 0;
             }
-        }
+       }
         else
         {
             input.y = _moveDirection.y;
@@ -49,7 +49,7 @@ public class Movement : MonoBehaviour
         }
         _moveDirection.y -= Gravity * Time.deltaTime;
         _controller.Move(_moveDirection * Time.deltaTime);
-*/
+
     }
 
 }

@@ -116,25 +116,25 @@ public class PlayerStateMachine : MonoBehaviour
             if (Input.GetKey(item.Key))
             {
 
-                if (Input.GetKey(KeyCode.LeftShift) && item.Key == KeyCode.W)
+                if (Input.GetKey(KeyCode.LeftShift))
                 {
 
-                    _animator.SetBool(item.Value, false);
-                    _animator.SetBool("isRunning", true);
+                    _animator.SetBool(item.Value, true);
+                    _animator.SetBool("isLeftShift", true);
 
                     _movement.MoveSpeed = 15f;
                     return;
                 }
 
                 _animator.SetBool(item.Value, true);
-                _animator.SetBool("isRunning", false);
+                _animator.SetBool("isLeftShift", false);
                 _movement.MoveSpeed = 3f;
 
             }
             else
             {
                 _animator.SetBool(item.Value, false);
-                _animator.SetBool("isRunning", false);
+                _animator.SetBool("isLeftShift", false);
             }
 
         }
