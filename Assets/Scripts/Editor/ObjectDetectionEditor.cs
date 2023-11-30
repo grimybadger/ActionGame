@@ -48,6 +48,7 @@ public class ObjectDetectionEditor : Editor
         var isDetecting = serializedObject.FindProperty("_isDetecting");
         var useRadar = serializedObject.FindProperty("_useRadar");
         var mdetectionDistance = serializedObject.FindProperty("_mDistanceDetection");
+        var segmentPositions = serializedObject.FindProperty("_segmentPositions");
 
         
        // EditorGUILayout.PropertyField(makeDecision);
@@ -66,6 +67,7 @@ public class ObjectDetectionEditor : Editor
         EditorGUILayout.PropertyField(isDetecting);
         EditorGUILayout.PropertyField(useRadar);
         EditorGUILayout.PropertyField(mdetectionDistance);
+        EditorGUILayout.PropertyField(segmentPositions);
 
         if (GUILayout.Button("Toggle Detection", GUILayout.Width(250)))
         {

@@ -4,6 +4,8 @@ using UnityEngine;
 using System;
 
 
+
+
 public class ObjectDetection : MonoBehaviour
 {
      [Header("Decision Making")]
@@ -32,6 +34,7 @@ public class ObjectDetection : MonoBehaviour
     [SerializeField] private bool _isDetecting = false;
     [SerializeField] private bool _useRadar;
     [SerializeField] private bool _mDistanceDetection; // Are we using distance to detect instead of collider
+    [SerializeField] private List<SegmentSpot> _segmentPositions = new();
     private bool _detectedObject; 
    
     private Coroutine _co;
@@ -43,6 +46,12 @@ public class ObjectDetection : MonoBehaviour
     {
         _decisionMaking = new DecisionMaking(this);
         _col = GetComponent<Collider>();
+        
+        for(int i = 0; i < (_segmentNumbers * 2); i ++)
+        {
+            SegmentSpot spot = new();
+            _segmentPositions.Add(spot);
+        }
     }
 
     private void DrawLine()
@@ -81,18 +90,24 @@ public class ObjectDetection : MonoBehaviour
         Debug.DrawRay(centerOffset, rightHandle * MaxDistance, Color.yellow);
         Debug.DrawRay(centerOffset, transform.forward * MaxDistance, Color.magenta);//Center Line
 
-        float segmentSizes = (angle /2) ;
+        float segmentSizes = angle / 2 ;
         DetectedObject = false;
         for (int i = 0; i < SegmentNumber; i++)
         {
+          
             Vector3 direction = Quaternion.Euler(0, GetAngle(segmentSizes,SegmentNumber,i), 0) * transform.forward;
-            Vector3 mirrorDirection = Quaternion.Euler(0,GetAngle(-segmentSizes,SegmentNumber,i), 0) * transform.forward;
+            Vector3 mirrorDirection = direction * -1;
+            //Vector3 mirrorDirection = Quaternion.Euler(0,GetAngle(-segmentSizes,SegmentNumber,i), 0) * transform.forward;
             //Debug.Log(segmentSizes);
             //Debug.Log(GetAngle(segmentSizes, d.SpokeNumber, i));
             Debug.DrawRay(centerOffset, direction * MaxDistance, Color.green);
             Debug.DrawRay(centerOffset, mirrorDirection * MaxDistance, Color.cyan);
             RaycastHit hit;
-           
+            Vector3 segmentEndSpot = centerOffset - direction * MaxDistance;
+            Vector3 oppositeEnd = centerOffset - mirrorDirection * MaxDistance;
+            //if (_segmentPositions.Count > SegmentNumber * 2) _segmentPositions.Clear();
+            if (_segmentPositions[i].Position != segmentEndSpot) _segmentPositions[i].Position = segmentEndSpot;
+            if (_segmentPositions[(int)SegmentNumber + i].Position != oppositeEnd) _segmentPositions[(int)SegmentNumber + i].Position = oppositeEnd;
             if (Physics.Raycast(centerOffset, mirrorDirection,out hit, MaxDistance) || Physics.Raycast(centerOffset, direction,out hit, MaxDistance))
             {
                 if (!_detectedItems.Contains(hit.collider.gameObject))
@@ -111,16 +126,17 @@ public class ObjectDetection : MonoBehaviour
                 Debug.Log(hit.collider.gameObject.name);
                 DetectedObject = true;
             }
+         
         }
     }
     private float GetAngle(float angle, float segmentDivisions, float currentSegment)
     {
         if(segmentDivisions == 1 )
         {
-            return angle = angle / 2; 
+            return angle / 2; 
         }
        float segments =  angle / segmentDivisions;
-       float angleDegree = (angle - (segments * (currentSegment + 1)));
+       float angleDegree = angle - (segments * (currentSegment + 1));
        return angleDegree;
     } 
 
@@ -233,6 +249,10 @@ public class ObjectDetection : MonoBehaviour
     {
         get => _mDistanceDetection;
         set => _mDistanceDetection = value;
+    }
+    public List<SegmentSpot> SegmentSpots
+    {
+        get => _segmentPositions;
     }
     #endregion
 }

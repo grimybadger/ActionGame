@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Timers;
 using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
@@ -241,6 +242,18 @@ public class EnemyBehavior : MonoBehaviour
         // Update the state machine current state;
         // if (!isPlayerControlled)
         // {
+            /*
+        foreach(var item in EnemyMovement.ObjectDetection.DetectedItems)
+        {
+          
+            if(item.GetComponent<Character>() !=null && item.GetComponent<Character>().CharacterType == CharacterType.enemy)
+            {
+                if(Vector3.Distance(transform.position, item.transform.position) < 1)
+                {
+                    transform.Translate(Vector3.right * 4f * Time.deltaTime);
+                }
+            }
+        }*/
         _stateMachine.Update();
         //Aiming();
         //  }

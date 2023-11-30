@@ -1,6 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using Unity.VisualScripting;
+using JetBrains.Annotations;
+using UnityEditor.Experimental.GraphView;
+
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -11,6 +16,11 @@ public class EnemyMovement : MonoBehaviour
     [field: SerializeField] public int RandomInt { get; private set; } = 0;
 
     public bool _hasDecidedMovement = false;
+    private bool _hasPosition;
+
+    private SegmentSpot _spot;
+
+    public Vector3 gotoPos = default; 
     private void Update()
     {
         if (IsMoving)
@@ -29,7 +39,10 @@ public class EnemyMovement : MonoBehaviour
              var step = MoveSpeed * Time.deltaTime; // calculate distance to move
             // Debug.Log(step);
             transform.LookAt(Player.transform);
-            transform.position = Vector3.MoveTowards(transform.position, Player.transform.position, step);
+         
+            if (!_hasPosition) GetPlayerPosition();
+            //transform.position = Vector3.MoveTowards(transform.position, Player.transform.position, step);
+            transform.position = Vector3.MoveTowards(transform.position,_spot.Position , step);
             CheckForPlayer();
         }
     }
@@ -52,6 +65,25 @@ public class EnemyMovement : MonoBehaviour
         //Need to put something in here to trigger movement again and make it look natural 
         yield return new WaitForSeconds(1);
         IsMoving = true;
+    }
+    private SegmentSpot GetPlayerPosition()
+    {
+        _spot = Player.GetComponent<ObjectDetection>().SegmentSpots.FirstOrDefault(x => !x.HasSpotBeenClaimed);
+        _spot.HasSpotBeenClaimed = true;
+        _hasPosition = true;
+        /*
+        Vector3 pos = default; 
+        
+        foreach (var item in Player.GetComponent<ObjectDetection>().SegmentSpots)
+        {
+            if(!item.HasSpotBeenClaimed)
+            {
+                item.HasSpotBeenClaimed = true;
+                pos = item.Position;
+                break;
+            }
+        }*/
+        return _spot;
     }
 
 }
