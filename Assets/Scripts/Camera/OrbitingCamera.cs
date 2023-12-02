@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class OrbitingCamera : MonoBehaviour
 {
-
     [field: SerializeField] public Transform Target { get; private set; }
     [field: SerializeField] public float RotationSpeed { get; private set; } = 120f;
     [field: SerializeField] public float ElevationSpeed { get; private set; } = 120f;
@@ -34,8 +33,7 @@ public class OrbitingCamera : MonoBehaviour
         }
     }
 
-    private void Update() 
-   
+    private void LateUpdate() 
     {
 
         if(Input.GetMouseButton(2))
