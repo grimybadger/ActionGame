@@ -13,9 +13,9 @@ public class EnemyMovement : MonoBehaviour
 	[field: SerializeField] public GameObject Player { get; private set; }
 	[field: SerializeField] public float MoveSpeed { get; set; } = 2f;
 	[field: SerializeField] public ObjectDetection ObjectDetection { get; private set; }
-	[field: SerializeField] public bool IsMoving { get; private set; }
+	[field: SerializeField] public bool IsMoving { get;  set; }
 	[field: SerializeField] public int RandomInt { get; private set; } = 0;
-	[field: SerializeField] public Transform GoToPosition { get; set; }
+	[field: SerializeField] public Vector3 GoToPosition { get; set; }
 
 	public bool _hasDecidedMovement = false;
 	private bool _hasPosition;
@@ -26,7 +26,7 @@ public class EnemyMovement : MonoBehaviour
 
 	private void Start()
 	{
-		GoToPosition = transform;
+		//GoToPosition = transform;
 	}
 	private void LateUpdate()
 	{
@@ -48,7 +48,7 @@ public class EnemyMovement : MonoBehaviour
 			transform.LookAt(Player.transform);
 
 			//if (!_hasPosition) GetPlayerPosition();
-			transform.position = Vector3.MoveTowards(transform.position, Player.transform.position, step);
+			transform.position = Vector3.MoveTowards(transform.position, GoToPosition, step);
 			//transform.position = Vector3.MoveTowards(transform.position, GoToPosition.transform.position, 0f * Time.deltaTime);
 			//transform.position = Vector3.MoveTowards(transform.position, Player.transform.position, 0f);
 			CheckForPlayer();

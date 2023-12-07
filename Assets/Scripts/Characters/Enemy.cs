@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace EnemyLogic {
+namespace EnemyLogic 
+{
 	public class Enemy : MonoBehaviour
 	{
 		[field: SerializeField] public EnemyMovement Movement { get; private set; }

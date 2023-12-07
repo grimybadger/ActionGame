@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Timers;
 using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
@@ -39,9 +37,7 @@ public class EnemyBehavior : MonoBehaviour
 	[field: SerializeField] public bool IsOneOnOneDuel { get; private set; }
 	[field: SerializeField] public bool IsRefusingToEngage { get; private set; }
 	[field: SerializeField] public bool IsEngagingTarget { get; private set; }
-	[field: SerializeField] public bool IsTaunting{ get; private set; }
-
-
+	[field: SerializeField] public bool IsTaunting { get; private set; }
 
 	private bool _isAiming;
 	private float _defaultCountdown;
@@ -94,7 +90,6 @@ public class EnemyBehavior : MonoBehaviour
 		{
 			if (EnemyMovement.IsMoving)
 			{
-
 				if (EnemyMovement.RandomInt == 1)
 				{
 					Animator.SetBool("isWalking", true);
@@ -153,21 +148,37 @@ public class EnemyBehavior : MonoBehaviour
 			if (_isTargetAThreat)
 			{
 				IsAttacking = true;
+				//EnemyMovement.StartMovement();
 				if (IsAttacking)
 				{
-					_targetDistance = Vector3.Distance(transform.position, target.position);
-					if (_targetDistance < 5)
+					//if(!_isTargetInRange)
+					//	{
+					//StartCoroutine(EnemyMovement.CheckForMovement());
+					EnemyMovement.GoToPosition = target.transform.position;
+					//EnemyMovement.StartMovement();
+					//transform.position = Vector3.MoveTowards(transform.position, EnemyMovement.GoToPosition, 0);
+					//StartCoroutine(EnemyMovement.CheckForMovement());
+					//	}
+					_targetDistance = Vector3.Distance(transform.position, target.transform.position);
+					Debug.Log($"Distance to Player: {_targetDistance}");
+					if (_targetDistance < 1.6f)
 					{
 						_isTargetInRange = true;
 						Animator.Play($"{_attacks[0]}");
+						EnemyMovement.IsMoving = false;
+						Debug.Log("Gap has been closed");
+						//EnemyMovement.StopCoroutine(EnemyMovement.);
 					}
-					else if (_targetDistance > 2)
+					else if (_targetDistance > 3f)
 					{
-						// IsAttacking = false;
-						_isTargetInRange = false;
+						//IsAttacking = false;
+						//IsTargetAThreat = false;
+						//_isTargetInRange = false;
 						_stateMachine.TransitionTo("idle");
-						EnemyMovement.ObjectDetection.DetectedItems.Remove(target.gameObject);
-						StartCoroutine(EnemyMovement.CheckForMovement());
+						//EnemyMovement.ObjectDetection.DetectedItems.Remove(target.gameObject);
+						//EnemyMovement.StartMovement();
+						
+						EnemyMovement.IsMoving = true;
 					}
 					//Animator.Play($"{_attacks[0]}");
 				}
@@ -197,7 +208,9 @@ public class EnemyBehavior : MonoBehaviour
 			}
 */
 		};
-		attacking.onExit = delegate { };
+		attacking.onExit = delegate {
+			Debug.Log("Exited Attacking");			
+		 };
 
 		/*
 				attacking.onEnter = delegate
