@@ -96,7 +96,7 @@ public class EnemyBehavior : MonoBehaviour
 				}
 				else if (EnemyMovement.RandomInt == 2)
 				{
-					EnemyMovement.MoveSpeed = 5f;
+					//EnemyMovement.MoveSpeed = 5f;
 					Animator.SetBool("isRunning", true);
 				}
 
@@ -105,7 +105,7 @@ public class EnemyBehavior : MonoBehaviour
 			{
 				Animator.SetBool("isWalking", false);
 				Animator.SetBool("isRunning", false);
-				EnemyMovement.MoveSpeed = 3f;
+			//	EnemyMovement.MoveSpeed = 3f;
 				EnemyMovement._hasDecidedMovement = false;
 				_stateMachine.TransitionTo("attacking");
 			}

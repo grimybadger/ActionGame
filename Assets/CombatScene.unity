@@ -252,8 +252,14 @@ MonoBehaviour:
   <Threshold>k__BackingField: 1.5
   <DecayCoefficient>k__BackingField: 1
   <Rigidbody>k__BackingField: {fileID: 0}
-  <Radius>k__BackingField: 0
+  <TargetRigidbody>k__BackingField: {fileID: 0}
+  <TargetRadius>k__BackingField: 0
+  <SlowRadius>k__BackingField: 0
   <TimeToTarget>k__BackingField: 0
+  <RotationSpeed>k__BackingField: 10
+  <TargetSpeed>k__BackingField: 0
+  <MaxPredictionTime>k__BackingField: 0
+  <PredictionTime>k__BackingField: 0
 --- !u!1001 &48453396
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -738,8 +744,14 @@ MonoBehaviour:
   <Threshold>k__BackingField: 1.5
   <DecayCoefficient>k__BackingField: 1
   <Rigidbody>k__BackingField: {fileID: 0}
-  <Radius>k__BackingField: 0
+  <TargetRigidbody>k__BackingField: {fileID: 0}
+  <TargetRadius>k__BackingField: 0
+  <SlowRadius>k__BackingField: 0
   <TimeToTarget>k__BackingField: 0
+  <RotationSpeed>k__BackingField: 10
+  <TargetSpeed>k__BackingField: 0
+  <MaxPredictionTime>k__BackingField: 0
+  <PredictionTime>k__BackingField: 0
 --- !u!136 &90038539
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1526,8 +1538,14 @@ MonoBehaviour:
   <Threshold>k__BackingField: 1.5
   <DecayCoefficient>k__BackingField: 1
   <Rigidbody>k__BackingField: {fileID: 0}
-  <Radius>k__BackingField: 0
+  <TargetRigidbody>k__BackingField: {fileID: 0}
+  <TargetRadius>k__BackingField: 0
+  <SlowRadius>k__BackingField: 0
   <TimeToTarget>k__BackingField: 0
+  <RotationSpeed>k__BackingField: 10
+  <TargetSpeed>k__BackingField: 0
+  <MaxPredictionTime>k__BackingField: 0
+  <PredictionTime>k__BackingField: 0
 --- !u!136 &273134370
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1944,8 +1962,14 @@ MonoBehaviour:
   <Threshold>k__BackingField: 1.5
   <DecayCoefficient>k__BackingField: 1
   <Rigidbody>k__BackingField: {fileID: 0}
-  <Radius>k__BackingField: 0
+  <TargetRigidbody>k__BackingField: {fileID: 0}
+  <TargetRadius>k__BackingField: 0
+  <SlowRadius>k__BackingField: 0
   <TimeToTarget>k__BackingField: 0
+  <RotationSpeed>k__BackingField: 10
+  <TargetSpeed>k__BackingField: 0
+  <MaxPredictionTime>k__BackingField: 0
+  <PredictionTime>k__BackingField: 0
 --- !u!1001 &343071626
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2273,8 +2297,14 @@ MonoBehaviour:
   <Threshold>k__BackingField: 1.5
   <DecayCoefficient>k__BackingField: 1
   <Rigidbody>k__BackingField: {fileID: 0}
-  <Radius>k__BackingField: 0
+  <TargetRigidbody>k__BackingField: {fileID: 0}
+  <TargetRadius>k__BackingField: 0
+  <SlowRadius>k__BackingField: 0
   <TimeToTarget>k__BackingField: 0
+  <RotationSpeed>k__BackingField: 10
+  <TargetSpeed>k__BackingField: 0
+  <MaxPredictionTime>k__BackingField: 0
+  <PredictionTime>k__BackingField: 0
 --- !u!1 &442962635
 GameObject:
   m_ObjectHideFlags: 0
@@ -3321,8 +3351,14 @@ MonoBehaviour:
   <Threshold>k__BackingField: 1.5
   <DecayCoefficient>k__BackingField: 1
   <Rigidbody>k__BackingField: {fileID: 0}
-  <Radius>k__BackingField: 0
+  <TargetRigidbody>k__BackingField: {fileID: 0}
+  <TargetRadius>k__BackingField: 0
+  <SlowRadius>k__BackingField: 0
   <TimeToTarget>k__BackingField: 0
+  <RotationSpeed>k__BackingField: 10
+  <TargetSpeed>k__BackingField: 0
+  <MaxPredictionTime>k__BackingField: 0
+  <PredictionTime>k__BackingField: 0
 --- !u!136 &594273395
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5082,8 +5118,14 @@ MonoBehaviour:
   <Threshold>k__BackingField: 1.5
   <DecayCoefficient>k__BackingField: 1
   <Rigidbody>k__BackingField: {fileID: 0}
-  <Radius>k__BackingField: 0
+  <TargetRigidbody>k__BackingField: {fileID: 0}
+  <TargetRadius>k__BackingField: 0
+  <SlowRadius>k__BackingField: 0
   <TimeToTarget>k__BackingField: 0
+  <RotationSpeed>k__BackingField: 10
+  <TargetSpeed>k__BackingField: 0
+  <MaxPredictionTime>k__BackingField: 0
+  <PredictionTime>k__BackingField: 0
 --- !u!136 &793180344
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5223,8 +5265,14 @@ MonoBehaviour:
   <Threshold>k__BackingField: 1.5
   <DecayCoefficient>k__BackingField: 1
   <Rigidbody>k__BackingField: {fileID: 0}
-  <Radius>k__BackingField: 0
+  <TargetRigidbody>k__BackingField: {fileID: 0}
+  <TargetRadius>k__BackingField: 0
+  <SlowRadius>k__BackingField: 0
   <TimeToTarget>k__BackingField: 0
+  <RotationSpeed>k__BackingField: 10
+  <TargetSpeed>k__BackingField: 0
+  <MaxPredictionTime>k__BackingField: 0
+  <PredictionTime>k__BackingField: 0
 --- !u!1 &845826826
 GameObject:
   m_ObjectHideFlags: 0
@@ -5450,8 +5498,14 @@ MonoBehaviour:
   <Threshold>k__BackingField: 1.5
   <DecayCoefficient>k__BackingField: 1
   <Rigidbody>k__BackingField: {fileID: 0}
-  <Radius>k__BackingField: 10
+  <TargetRigidbody>k__BackingField: {fileID: 0}
+  <TargetRadius>k__BackingField: 0
+  <SlowRadius>k__BackingField: 0
   <TimeToTarget>k__BackingField: 2
+  <RotationSpeed>k__BackingField: 10
+  <TargetSpeed>k__BackingField: 0
+  <MaxPredictionTime>k__BackingField: 0
+  <PredictionTime>k__BackingField: 0
 --- !u!136 &857367119
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7360,7 +7414,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &1044325448
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8034,8 +8088,14 @@ MonoBehaviour:
   <Threshold>k__BackingField: 1.5
   <DecayCoefficient>k__BackingField: 1
   <Rigidbody>k__BackingField: {fileID: 0}
-  <Radius>k__BackingField: 0
+  <TargetRigidbody>k__BackingField: {fileID: 0}
+  <TargetRadius>k__BackingField: 0
+  <SlowRadius>k__BackingField: 0
   <TimeToTarget>k__BackingField: 0
+  <RotationSpeed>k__BackingField: 10
+  <TargetSpeed>k__BackingField: 0
+  <MaxPredictionTime>k__BackingField: 0
+  <PredictionTime>k__BackingField: 0
 --- !u!136 &1130677638
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -8419,7 +8479,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5213d85dfdb7a3f4e83e285b2679831f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Squad>k__BackingField: []
+  <Squad>k__BackingField:
+  - {fileID: 1180853559}
+  - {fileID: 2122001318}
+  - {fileID: 1925712650}
+  - {fileID: 1633589620}
+  - {fileID: 2082661840}
+  - {fileID: 2147383355}
+  <SlotNumber>k__BackingField: 0
+  <Target>k__BackingField: {fileID: 1180853547}
+  <SlotPosition>k__BackingField: {x: 0, y: 0, z: 0}
+  <Formation>k__BackingField: 0
+  <CharacterRadius>k__BackingField: 0
+  <AssignedSlot>k__BackingField: 0
+  <Behavior>k__BackingField: {fileID: 0}
 --- !u!114 &1180853561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8444,8 +8517,14 @@ MonoBehaviour:
   <Threshold>k__BackingField: 1.5
   <DecayCoefficient>k__BackingField: 10
   <Rigidbody>k__BackingField: {fileID: 0}
-  <Radius>k__BackingField: 0
+  <TargetRigidbody>k__BackingField: {fileID: 0}
+  <TargetRadius>k__BackingField: 0
+  <SlowRadius>k__BackingField: 0
   <TimeToTarget>k__BackingField: 0
+  <RotationSpeed>k__BackingField: 10
+  <TargetSpeed>k__BackingField: 0
+  <MaxPredictionTime>k__BackingField: 0
+  <PredictionTime>k__BackingField: 0
 --- !u!1001 &1181776396
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11090,8 +11169,14 @@ MonoBehaviour:
   <Threshold>k__BackingField: 1.5
   <DecayCoefficient>k__BackingField: 1
   <Rigidbody>k__BackingField: {fileID: 0}
-  <Radius>k__BackingField: 0
+  <TargetRigidbody>k__BackingField: {fileID: 0}
+  <TargetRadius>k__BackingField: 0
+  <SlowRadius>k__BackingField: 0
   <TimeToTarget>k__BackingField: 0
+  <RotationSpeed>k__BackingField: 10
+  <TargetSpeed>k__BackingField: 0
+  <MaxPredictionTime>k__BackingField: 0
+  <PredictionTime>k__BackingField: 0
 --- !u!136 &1526337743
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -11798,7 +11883,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5213d85dfdb7a3f4e83e285b2679831f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Squad>k__BackingField: []
+  <Squad>k__BackingField:
+  - {fileID: 1180853559}
+  - {fileID: 2122001318}
+  - {fileID: 1925712650}
+  - {fileID: 1633589620}
+  - {fileID: 2082661840}
+  - {fileID: 2147383355}
+  <SlotNumber>k__BackingField: 0
+  <Target>k__BackingField: {fileID: 8310868103962022856}
+  <SlotPosition>k__BackingField: {x: 0, y: 0, z: 0}
+  <Formation>k__BackingField: 0
+  <CharacterRadius>k__BackingField: 0
+  <AssignedSlot>k__BackingField: 0
+  <Behavior>k__BackingField: {fileID: 0}
 --- !u!114 &1633589622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11823,8 +11921,14 @@ MonoBehaviour:
   <Threshold>k__BackingField: 1.5
   <DecayCoefficient>k__BackingField: 1
   <Rigidbody>k__BackingField: {fileID: 0}
-  <Radius>k__BackingField: 0
+  <TargetRigidbody>k__BackingField: {fileID: 0}
+  <TargetRadius>k__BackingField: 0
+  <SlowRadius>k__BackingField: 0
   <TimeToTarget>k__BackingField: 0
+  <RotationSpeed>k__BackingField: 10
+  <TargetSpeed>k__BackingField: 0
+  <MaxPredictionTime>k__BackingField: 0
+  <PredictionTime>k__BackingField: 0
 --- !u!1 &1675754584
 GameObject:
   m_ObjectHideFlags: 0
@@ -12588,7 +12692,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1789017235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12607,8 +12711,14 @@ MonoBehaviour:
   <Threshold>k__BackingField: 1.5
   <DecayCoefficient>k__BackingField: 1
   <Rigidbody>k__BackingField: {fileID: 0}
-  <Radius>k__BackingField: 5
+  <TargetRigidbody>k__BackingField: {fileID: 8310868103962022862}
+  <TargetRadius>k__BackingField: 0
+  <SlowRadius>k__BackingField: 0
   <TimeToTarget>k__BackingField: 0.25
+  <RotationSpeed>k__BackingField: 10
+  <TargetSpeed>k__BackingField: 0
+  <MaxPredictionTime>k__BackingField: 0
+  <PredictionTime>k__BackingField: 0
 --- !u!54 &1789017236
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13656,7 +13766,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5213d85dfdb7a3f4e83e285b2679831f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Squad>k__BackingField: []
+  <Squad>k__BackingField:
+  - {fileID: 1180853559}
+  - {fileID: 2122001318}
+  - {fileID: 1925712650}
+  - {fileID: 1633589620}
+  - {fileID: 2082661840}
+  - {fileID: 2147383355}
+  <SlotNumber>k__BackingField: 0
+  <Target>k__BackingField: {fileID: 8310868103962022856}
+  <SlotPosition>k__BackingField: {x: 0, y: 0, z: 0}
+  <Formation>k__BackingField: 0
+  <CharacterRadius>k__BackingField: 0
+  <AssignedSlot>k__BackingField: 0
+  <Behavior>k__BackingField: {fileID: 0}
 --- !u!114 &1925712652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13681,8 +13804,14 @@ MonoBehaviour:
   <Threshold>k__BackingField: 1.5
   <DecayCoefficient>k__BackingField: 1
   <Rigidbody>k__BackingField: {fileID: 0}
-  <Radius>k__BackingField: 0
+  <TargetRigidbody>k__BackingField: {fileID: 0}
+  <TargetRadius>k__BackingField: 0
+  <SlowRadius>k__BackingField: 0
   <TimeToTarget>k__BackingField: 0
+  <RotationSpeed>k__BackingField: 10
+  <TargetSpeed>k__BackingField: 0
+  <MaxPredictionTime>k__BackingField: 0
+  <PredictionTime>k__BackingField: 0
 --- !u!1 &1925878406
 GameObject:
   m_ObjectHideFlags: 0
@@ -14515,8 +14644,14 @@ MonoBehaviour:
   <Threshold>k__BackingField: 1.5
   <DecayCoefficient>k__BackingField: 1
   <Rigidbody>k__BackingField: {fileID: 0}
-  <Radius>k__BackingField: 0
+  <TargetRigidbody>k__BackingField: {fileID: 0}
+  <TargetRadius>k__BackingField: 0
+  <SlowRadius>k__BackingField: 0
   <TimeToTarget>k__BackingField: 0
+  <RotationSpeed>k__BackingField: 10
+  <TargetSpeed>k__BackingField: 0
+  <MaxPredictionTime>k__BackingField: 0
+  <PredictionTime>k__BackingField: 0
 --- !u!1 &2045368873
 GameObject:
   m_ObjectHideFlags: 0
@@ -14996,7 +15131,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5213d85dfdb7a3f4e83e285b2679831f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Squad>k__BackingField: []
+  <Squad>k__BackingField:
+  - {fileID: 1180853559}
+  - {fileID: 2122001318}
+  - {fileID: 1925712650}
+  - {fileID: 1633589620}
+  - {fileID: 2082661840}
+  - {fileID: 2147383355}
+  <SlotNumber>k__BackingField: 0
+  <Target>k__BackingField: {fileID: 8310868103962022856}
+  <SlotPosition>k__BackingField: {x: 0, y: 0, z: 0}
+  <Formation>k__BackingField: 0
+  <CharacterRadius>k__BackingField: 0
+  <AssignedSlot>k__BackingField: 0
+  <Behavior>k__BackingField: {fileID: 0}
 --- !u!114 &2082661842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15021,8 +15169,14 @@ MonoBehaviour:
   <Threshold>k__BackingField: 1.5
   <DecayCoefficient>k__BackingField: 1
   <Rigidbody>k__BackingField: {fileID: 0}
-  <Radius>k__BackingField: 0
+  <TargetRigidbody>k__BackingField: {fileID: 0}
+  <TargetRadius>k__BackingField: 0
+  <SlowRadius>k__BackingField: 0
   <TimeToTarget>k__BackingField: 0
+  <RotationSpeed>k__BackingField: 10
+  <TargetSpeed>k__BackingField: 0
+  <MaxPredictionTime>k__BackingField: 0
+  <PredictionTime>k__BackingField: 0
 --- !u!1 &2087627863 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3184936093540576848, guid: 789d07288eee49a48a3f47252990444a, type: 3}
@@ -15458,7 +15612,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5213d85dfdb7a3f4e83e285b2679831f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Squad>k__BackingField: []
+  <Squad>k__BackingField:
+  - {fileID: 1180853559}
+  - {fileID: 2122001318}
+  - {fileID: 1925712650}
+  - {fileID: 1633589620}
+  - {fileID: 2082661840}
+  - {fileID: 2147383355}
+  <SlotNumber>k__BackingField: 0
+  <Target>k__BackingField: {fileID: 8310868103962022856}
+  <SlotPosition>k__BackingField: {x: 0, y: 0, z: 0}
+  <Formation>k__BackingField: 0
+  <CharacterRadius>k__BackingField: 0
+  <AssignedSlot>k__BackingField: 0
+  <Behavior>k__BackingField: {fileID: 0}
 --- !u!114 &2122001320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15483,8 +15650,14 @@ MonoBehaviour:
   <Threshold>k__BackingField: 1.5
   <DecayCoefficient>k__BackingField: 1
   <Rigidbody>k__BackingField: {fileID: 0}
-  <Radius>k__BackingField: 0
+  <TargetRigidbody>k__BackingField: {fileID: 0}
+  <TargetRadius>k__BackingField: 0
+  <SlowRadius>k__BackingField: 0
   <TimeToTarget>k__BackingField: 0
+  <RotationSpeed>k__BackingField: 10
+  <TargetSpeed>k__BackingField: 0
+  <MaxPredictionTime>k__BackingField: 0
+  <PredictionTime>k__BackingField: 0
 --- !u!1 &2123208692
 GameObject:
   m_ObjectHideFlags: 0
@@ -16004,7 +16177,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5213d85dfdb7a3f4e83e285b2679831f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Squad>k__BackingField: []
+  <Squad>k__BackingField:
+  - {fileID: 1180853559}
+  - {fileID: 2122001318}
+  - {fileID: 1925712650}
+  - {fileID: 1633589620}
+  - {fileID: 2082661840}
+  - {fileID: 2147383355}
+  <SlotNumber>k__BackingField: 0
+  <Target>k__BackingField: {fileID: 8310868103962022856}
+  <SlotPosition>k__BackingField: {x: 0, y: 0, z: 0}
+  <Formation>k__BackingField: 0
+  <CharacterRadius>k__BackingField: 0
+  <AssignedSlot>k__BackingField: 0
+  <Behavior>k__BackingField: {fileID: 0}
 --- !u!114 &2147383357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16029,8 +16215,14 @@ MonoBehaviour:
   <Threshold>k__BackingField: 1.5
   <DecayCoefficient>k__BackingField: 1
   <Rigidbody>k__BackingField: {fileID: 0}
-  <Radius>k__BackingField: 0
+  <TargetRigidbody>k__BackingField: {fileID: 0}
+  <TargetRadius>k__BackingField: 0
+  <SlowRadius>k__BackingField: 0
   <TimeToTarget>k__BackingField: 0
+  <RotationSpeed>k__BackingField: 10
+  <TargetSpeed>k__BackingField: 0
+  <MaxPredictionTime>k__BackingField: 0
+  <PredictionTime>k__BackingField: 0
 --- !u!4 &685852921295966499
 Transform:
   m_ObjectHideFlags: 0
