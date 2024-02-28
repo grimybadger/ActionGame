@@ -18,11 +18,11 @@ public class PlayerStateMachine : MonoBehaviour
 	};
 
 	private Dictionary<KeyCode, string> _movements = new();
-	float timeAtpress;
-	float previousPressTime = 2f;
-	public bool _mchainAttack;
-	public bool _mchainAtTwo;
-	public bool _chainAtOne;
+	private float pressTimeStamp;
+	private float previousPressTime = 2f;
+	public bool isChainAttacking;
+	public bool isChainAtTwo;
+	public bool isChainAtOne;
 	public bool isAttacking;
 	
 	private void Start()
@@ -37,7 +37,7 @@ public class PlayerStateMachine : MonoBehaviour
 	private void LateUpdate()
 	{
 
-		if (_mchainAttack)
+		if (isChainAttacking)
 		{
 			//previousPressTime = 2f;
 			previousPressTime -= Time.deltaTime;
@@ -45,7 +45,7 @@ public class PlayerStateMachine : MonoBehaviour
 
 			if (previousPressTime <= 0)
 			{
-				_mchainAttack = false;
+				isChainAttacking = false;
 				previousPressTime = 2f;
 				_animator.SetBool("isChain", false);
 				isAttacking = false;
@@ -61,17 +61,17 @@ public class PlayerStateMachine : MonoBehaviour
 			//_animator.Play(_attacks[0]);
 			isAttacking = true;
 			_movement.MoveSpeed = 0f;
-			if (_mchainAttack)
+			if (isChainAttacking)
 			{
 				
-				if(_chainAtOne)
+				if(isChainAtOne)
 				{
 				   // _animator.SetBool("isChainTwo", true);
 					_animator.Play(_attacks[2]);
 				}
 			   
 					// _animator.SetBool("isChain", _chainAtOne = true);
-					_chainAtOne = true;
+					isChainAtOne = true;
 					_animator.Play(_attacks[1]);
 				  
 			   
@@ -81,9 +81,9 @@ public class PlayerStateMachine : MonoBehaviour
 				_animator.Play(_attacks[0]);
 				_animator.SetBool("isChain", false);
 				_animator.SetBool("isChainTwo", false);
-				_mchainAttack = true;
-				_chainAtOne = false;
-				_mchainAtTwo = false;
+				isChainAttacking = true;
+				isChainAtOne = false;
+				isChainAtTwo = false;
 			}
 
 			// _animator.Play(_attacks[1]);
@@ -94,9 +94,6 @@ public class PlayerStateMachine : MonoBehaviour
 			//  previousPressTime = timeAtpress;
 
 		}
-
-
-
 
 		foreach (KeyValuePair<KeyCode, string> item in _movements)
 		{
@@ -149,10 +146,7 @@ public class PlayerStateMachine : MonoBehaviour
 				 _animator.Play($"{_states[i] }");
 			}
 	   }*/
-
-
-
-
+	   
 		/*
 	   for(int i = 0; i < _movementKeyCodes.Count; i ++)
 	   {

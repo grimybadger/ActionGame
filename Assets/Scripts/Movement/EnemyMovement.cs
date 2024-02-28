@@ -5,7 +5,7 @@ using System.Linq;
 public class EnemyMovement : MonoBehaviour
 {
 	[field: SerializeField] public GameObject Player { get; private set; }
-	[field: SerializeField] public float MoveSpeed { get; set; } = 0f;
+	[field: SerializeField] public float MoveSpeed { get; set; } = 5f;
 	[field: SerializeField] public ObjectDetection ObjectDetection { get; private set; }
 	[field: SerializeField] public bool IsMoving { get; set; }
 	[field: SerializeField] public int RandomInt { get; private set; } = 0;
@@ -40,8 +40,7 @@ public class EnemyMovement : MonoBehaviour
 			//var step = MoveSpeed * Time.deltaTime; // calculate distance to move
 			// Debug.Log(step);
 			transform.LookAt(Player.transform);
-
-			//if (!_hasPosition) GetPlayerPosition();
+			//if(!_hasPosition) GetPlayerPosition();
 			//transform.position = Vector3.MoveTowards(transform.position, GoToPosition, step);
 			transform.position = Vector3.MoveTowards(transform.position, GoToPosition, 0f * Time.deltaTime);
 			//transform.position = Vector3.MoveTowards(transform.position, Player.transform.position, 0f);

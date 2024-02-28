@@ -2198,7 +2198,7 @@ PrefabInstance:
       objectReference: {fileID: 1438406462}
     - target: {fileID: 8171291942416777667, guid: 789d07288eee49a48a3f47252990444a, type: 3}
       propertyPath: m_UseGravity
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8171291942416777667, guid: 789d07288eee49a48a3f47252990444a, type: 3}
       propertyPath: m_Constraints
@@ -19230,9 +19230,9 @@ MonoBehaviour:
   - GhostSamurai_APose_Attack01_1_ALL_Inplace 0
   - GhostSamurai_APose_Attack01_2_ALL_Inplace 0
   - GhostSamurai_APose_Attack02_3_ALL_Inplace 0
-  _mchainAttack: 0
-  _mchainAtTwo: 0
-  _chainAtOne: 0
+  isChainAttacking: 0
+  isChainAtTwo: 0
+  isChainAtOne: 0
   isAttacking: 0
 --- !u!114 &8310868103962022861
 MonoBehaviour:
