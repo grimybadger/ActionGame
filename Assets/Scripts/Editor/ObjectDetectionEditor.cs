@@ -50,11 +50,11 @@ public class ObjectDetectionEditor : Editor
         var mdetectionDistance = serializedObject.FindProperty("_mDistanceDetection");
         var segmentPositions = serializedObject.FindProperty("_segmentPositions");
 
-        
-       // EditorGUILayout.PropertyField(makeDecision);
-        
+
+        // EditorGUILayout.PropertyField(makeDecision);
+
         EditorGUILayout.PropertyField(detectedObjects);
-        
+
         EditorGUILayout.PropertyField(detectionType);
         EditorGUILayout.PropertyField(maxDistance);
         EditorGUILayout.PropertyField(centerOffset);

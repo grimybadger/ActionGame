@@ -16,35 +16,36 @@ public class OrbitingCamera : MonoBehaviour
     [field: SerializeField] public float DistanceMax { get; private set; } = 15;
     [field: SerializeField] public float RotationAroundTarget { get; private set; } = 0.0f;
     [field: SerializeField] public float ElevationToTarget { get; private set; } = 0.0f;
-    [field: SerializeField] public Vector3 Offset{ get; private set; }
+    [field: SerializeField] public Vector3 Offset { get; private set; }
 
 
-    float _previousDistance; 
+    private float _previousDistance;
     // Start is called before the first frame update
     private void Start()
     {
         Vector3 angles = transform.eulerAngles;
         RotationAroundTarget = angles.y;
         ElevationToTarget = angles.x;
-        if(Target)
+        if (Target)
         {
             float currentDistance = (transform.position - Target.position).magnitude;
             Distance = Mathf.Clamp(currentDistance, DistanceMin, DistanceMax);
         }
     }
 
-    private void LateUpdate() 
+    private void LateUpdate()
     {
 
-        if(Input.GetMouseButton(2))
+        if (Input.GetMouseButton(2))
         {
             Distance = DistanceMin;
-        } else if(Input.GetMouseButtonUp(2))
+        }
+        else if (Input.GetMouseButtonUp(2))
         {
             Distance = DistanceMax;
         }
 
-        if(Target)
+        if (Target)
         {
             RotationAroundTarget += Input.GetAxis("Mouse X") * RotationSpeed * Distance * 0.02f;//Change .02f to a variable name
             ElevationToTarget -= Input.GetAxis("Mouse Y") * ElevationSpeed * 0.02f;//Change .02f to a variable name
@@ -54,7 +55,7 @@ public class OrbitingCamera : MonoBehaviour
 
             Distance = Distance - Input.GetAxis("Mouse ScrollWheel") * 5;//Change 5 to a variable name
             Distance = Mathf.Clamp(Distance, DistanceMin, DistanceMax);
-          
+
 
             Vector3 negDistance = new Vector3(0.0f, 0.0f, -Distance);
             Vector3 position = rotation * negDistance + new Vector3(Target.position.x + Offset.x, Target.position.y + Offset.y, Target.position.z + Offset.z);

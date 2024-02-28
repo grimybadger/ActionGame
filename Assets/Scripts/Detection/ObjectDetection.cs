@@ -3,57 +3,53 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-
-
-
 public class ObjectDetection : MonoBehaviour
 {
-	 [Header("Decision Making")]
+	[Header("Decision Making")]
 	[SerializeField] private DecisionMaking _decisionMaking;
 	[SerializeField] private DetectionType _detectionType;
-   //[field: SerializeField] public DetectionType DetectionType { get; private set; }
+	//[field: SerializeField] public DetectionType DetectionType { get; private set; }
 
 	[Header("Detected Object Properties")]
 	[SerializeField] private List<GameObject> _detectedItems = new List<GameObject>();
 
-   
+
 	[Header("Arc Properties")]
 	[SerializeField] private float _maxDistance = 5f;
 	[Range(-10f, 10f)]
 	[SerializeField] private float _centerOffset;
-	[Range(0f,1f)]
+	[Range(0f, 1f)]
 	[SerializeField] private float _heightOffset;
 	[Range(0f, 360f)]
-	[SerializeField] private float _angle = 45f; 
+	[SerializeField] private float _angle = 45f;
 	[SerializeField] private bool _isVisualized;
 	[SerializeField] private bool _isWithinArc;
 	[SerializeField] private float _rotationSpeed = 5;
 	[SerializeField] private float _segmentNumbers;
-  
+
 	[Header("Detection Properties")]
 	[SerializeField] private bool _isDetecting = false;
 	[SerializeField] private bool _useRadar;
 	[SerializeField] private bool _mDistanceDetection; // Are we using distance to detect instead of collider
 	[SerializeField] private List<SegmentSpot> _segmentPositions = new();
-	private bool _detectedObject; 
-   
+	private bool _detectedObject;
+
 	private Coroutine _co;
 	private Collider _col;
 
 	private float _timeCounter = 0;
 
-	private void Start() 
+	private void Start()
 	{
 		_decisionMaking = new DecisionMaking(this);
 		_col = GetComponent<Collider>();
-		
-		for(int i = 0; i < (_segmentNumbers * 2); i ++)
+
+		for (int i = 0; i < (_segmentNumbers * 2); i++)
 		{
 			SegmentSpot spot = new();
 			_segmentPositions.Add(spot);
 		}
-	
-		
+
 	}
 
 	private void DrawLine()
@@ -64,9 +60,9 @@ public class ObjectDetection : MonoBehaviour
 		RaycastHit hit;
 		DetectedObject = false;
 		DivideIntoSegments(Angle);
-	   
+
 		if (_useRadar)
-		{  
+		{
 			Vector3 centerOffset = new Vector3(_col.bounds.center.x, gameObject.transform.position.y + HeightOffset, _col.bounds.center.z + CenterOffset);
 			Debug.DrawRay(centerOffset, transform.TransformDirection(x, 0, y) * _maxDistance, Color.red);
 			if (Physics.Raycast(centerOffset, transform.TransformDirection(x, 0, y), out hit, _maxDistance))
@@ -82,23 +78,23 @@ public class ObjectDetection : MonoBehaviour
 			}
 		}
 	}
- 
+
 	private void DivideIntoSegments(float angle)
-	{   
+	{
 		Vector3 leftHandle = Quaternion.Euler(0, angle / 2, 0) * transform.forward;
-		Vector3 rightHandle = Quaternion.Euler(0, -angle / 2 , 0) * transform.forward;
+		Vector3 rightHandle = Quaternion.Euler(0, -angle / 2, 0) * transform.forward;
 		Vector3 centerOffset = new Vector3(_col.bounds.center.x, gameObject.transform.position.y + HeightOffset, _col.bounds.center.z + CenterOffset);
 		Debug.DrawRay(centerOffset, leftHandle * MaxDistance, Color.yellow);
 		Debug.DrawRay(centerOffset, rightHandle * MaxDistance, Color.yellow);
 		Debug.DrawRay(centerOffset, transform.forward * MaxDistance, Color.magenta);//Center Line
 
-		float segmentSizes = angle / 2 ;
+		float segmentSizes = angle / 2;
 		DetectedObject = false;
 		for (int i = 0; i < SegmentNumber; i++)
 		{
-		  
-			Vector3 direction = Quaternion.Euler(0, GetAngle(segmentSizes,SegmentNumber,i), 0) * transform.forward;
-			Vector3 mirrorDirection = Quaternion.Euler(0,GetAngle(-segmentSizes,SegmentNumber,i), 0) * transform.forward;
+
+			Vector3 direction = Quaternion.Euler(0, GetAngle(segmentSizes, SegmentNumber, i), 0) * transform.forward;
+			Vector3 mirrorDirection = Quaternion.Euler(0, GetAngle(-segmentSizes, SegmentNumber, i), 0) * transform.forward;
 			//Vector3 mirrorDirection = direction * -1;
 			//Debug.Log(segmentSizes);
 			//Debug.Log(GetAngle(segmentSizes, d.SpokeNumber, i));
@@ -113,12 +109,12 @@ public class ObjectDetection : MonoBehaviour
 			if (_segmentPositions[i].Position != segmentEndSpot) _segmentPositions[i].Position = segmentEndSpot;
 			if (_segmentPositions[(int)SegmentNumber + i].Position != oppositeEnd) _segmentPositions[(int)SegmentNumber + i].Position = oppositeEnd;
 			*/
-			if (Physics.Raycast(centerOffset, mirrorDirection,out hit, MaxDistance) || Physics.Raycast(centerOffset, direction,out hit, MaxDistance))
+			if (Physics.Raycast(centerOffset, mirrorDirection, out hit, MaxDistance) || Physics.Raycast(centerOffset, direction, out hit, MaxDistance))
 			{
 				if (!_detectedItems.Contains(hit.collider.gameObject))
 				{
 					_detectedItems.Add(hit.collider.gameObject);
-					if(hit.collider.gameObject.GetComponent<ObjectDetection>())
+					if (hit.collider.gameObject.GetComponent<ObjectDetection>())
 					{
 						_decisionMaking.Decision(_detectionType);
 					}
@@ -131,27 +127,27 @@ public class ObjectDetection : MonoBehaviour
 				Debug.Log(hit.collider.gameObject.name);
 				DetectedObject = true;
 			}
-		 
+
 		}
 	}
 	private float GetAngle(float angle, float segmentDivisions, float currentSegment)
 	{
-		if(segmentDivisions == 1 )
+		if (segmentDivisions == 1)
 		{
-			return angle / 2; 
+			return angle / 2;
 		}
-	   float segments =  angle / segmentDivisions;
-	   float angleDegree = angle - (segments * (currentSegment + 1));
-	   return angleDegree;
-	} 
+		float segments = angle / segmentDivisions;
+		float angleDegree = angle - (segments * (currentSegment + 1));
+		return angleDegree;
+	}
 
 	private IEnumerator Detect()
 	{
 		_isDetecting = !_isDetecting;
 
-		if(_isDetecting)
+		if (_isDetecting)
 		{
-		   while(true)
+			while (true)
 			{
 				DrawLine();
 				DistanceDetection();
@@ -159,7 +155,7 @@ public class ObjectDetection : MonoBehaviour
 				yield return null;
 			}
 		}
-		else if(!_isDetecting)
+		else if (!_isDetecting)
 		{
 			StopAllCoroutines();
 			print("Stop Detection");
@@ -167,28 +163,28 @@ public class ObjectDetection : MonoBehaviour
 	}
 	private void DistanceDetection()
 	{
-		if(_mDistanceDetection)
+		if (_mDistanceDetection)
 		{
 			DetectDecisionMaking.Decision(_detectionType);
 			_mDistanceDetection = false;
-		} 
+		}
 	}
 	public void ToggleDetection() => _co = StartCoroutine(Detect());
 
 	public Vector3 ArcDirection()
 	{
-		if(gameObject.transform.rotation.x != 0)
+		if (gameObject.transform.rotation.x != 0)
 		{
-			return new Vector3(0,0,-1);
+			return new Vector3(0, 0, -1);
 		}
 		return Vector3.up;
 	}
 	#region Properties
-	public List <GameObject> DetectedItems
+	public List<GameObject> DetectedItems
 	{
 		get => _detectedItems;
 		set => _detectedItems = value;
-	} 
+	}
 	public float MaxDistance
 	{
 		get => _maxDistance;

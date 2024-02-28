@@ -7,18 +7,18 @@ public class MouseLook : MonoBehaviour
 {
     [field: SerializeField] public float TurnSpeed { get; private set; } = 90f;
 
-    Quaternion _bodyStartOrientation;
-    float _yaw;
-    float _pitch;
+    private Quaternion _bodyStartOrientation;
+    private float _yaw;
+    private float _pitch;
 
     // Start is called before the first frame update
     void Start()
     {
         _bodyStartOrientation = transform.localRotation;
     }
-    
-        private void LateUpdate()
-        {
+
+    private void LateUpdate()
+    {
 
         // var horizontal = Input.GetAxis("Mouse X") * Time.deltaTime * TurnSpeed;
         //var vertical = Input.GetAxis("Mouse Y") * Time.deltaTime * TurnSpeed;
@@ -29,33 +29,33 @@ public class MouseLook : MonoBehaviour
         movementDirection.Normalize();
         // _yaw += horizontal;
         //_pitch += vertical;
-       /// transform.Translate(movementDirection* 1f * Time.deltaTime,Space.World);
+        /// transform.Translate(movementDirection* 1f * Time.deltaTime,Space.World);
         if (movementDirection != Vector3.zero)
         {
             //Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
-            // Quaternion toRotation = Quaternion.LookRotation(Camera.main.transform.forward, Vector3.up);
+            //Quaternion toRotation = Quaternion.LookRotation(Camera.main.transform.forward, Vector3.up);
             float y = Camera.main.transform.eulerAngles.y;
-           Quaternion a = Quaternion.Euler(0, y, 0);
-  
+            Quaternion a = Quaternion.Euler(0, y, 0);
+
             transform.rotation = Quaternion.RotateTowards(transform.rotation, a, 750f * Time.deltaTime);
         }
-            //var bodyrotation = Quaternion.AngleAxis(_yaw, Vector3.up);
+        //var bodyrotation = Quaternion.AngleAxis(_yaw, Vector3.up);
 
-            //  var bodyrotation = Quaternion.AngleAxis
-           // transform.localRotation = bodyrotation * _bodyStartOrientation;
-           // transform.rotation = Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0);
+        //var bodyrotation = Quaternion.AngleAxis
+        //transform.localRotation = bodyrotation * _bodyStartOrientation;
+        //transform.rotation = Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0);
 
-            //transform.forward = Camera.main.transform.forward;
+        //transform.forward = Camera.main.transform.forward;
 
-            //transform.localRotation = Camera.main.transform.rotation;
-            // transform.rotation = Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0);
-        }
-    
+        //transform.localRotation = Camera.main.transform.rotation;
+        //transform.rotation = Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0);
+    }
+
     //private void Update()
-   // {
-       // Quaternion q = Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0);
-       // Quaternion a = Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0);
-       // transform.rotation = Quaternion.Lerp(q, a, 2f * Time.deltaTime);
-        //transform.rotation =  Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0);
-   // }
+    // {
+    // Quaternion q = Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0);
+    // Quaternion a = Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0);
+    // transform.rotation = Quaternion.Lerp(q, a, 2f * Time.deltaTime);
+    //transform.rotation =  Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0);
+    // }
 }

@@ -1,19 +1,13 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using Unity.VisualScripting;
-using JetBrains.Annotations;
-using UnityEditor.Experimental.GraphView;
-
-
 
 public class EnemyMovement : MonoBehaviour
 {
 	[field: SerializeField] public GameObject Player { get; private set; }
 	[field: SerializeField] public float MoveSpeed { get; set; } = 0f;
 	[field: SerializeField] public ObjectDetection ObjectDetection { get; private set; }
-	[field: SerializeField] public bool IsMoving { get;  set; }
+	[field: SerializeField] public bool IsMoving { get; set; }
 	[field: SerializeField] public int RandomInt { get; private set; } = 0;
 	[field: SerializeField] public Vector3 GoToPosition { get; set; }
 
