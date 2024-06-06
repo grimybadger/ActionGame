@@ -115,13 +115,13 @@ public class PlayerStateMachine : MonoBehaviour
 					_animator.SetBool(item.Value, true);
 					_animator.SetBool("isLeftShift", true);
 
-					_movement.MoveSpeed = 15f;
+					//_movement.MoveSpeed = 15f;
 					return;
 				}
 
 				_animator.SetBool(item.Value, true);
 				_animator.SetBool("isLeftShift", false);
-				_movement.MoveSpeed = 3f;
+				//_movement.MoveSpeed = 3f;
 
 			}
 			else
