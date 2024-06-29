@@ -14,8 +14,11 @@ public class Movement : MonoBehaviour
 	[field: SerializeField] public float AirControl { get; private set; }
 	[field: SerializeField] public float Distance { get; private set; }
 	[field: SerializeField] public GameObject OtherGameObject { get; private set; } = default;
+	[field: SerializeField] public bool isGoingUp { get; set; }
+	[field: SerializeField] public float YDirection { get; set; }
+	[field: SerializeField] public bool isOnPlatform { get; set; }
 	//[field: SerializeField] public Vector3 MoveDirection { get; set; } = Vector3.zero;
-	private Vector3 _moveDirection;
+	public Vector3 _moveDirection = Vector3.zero;
 
 	CharacterController _controller;
 
@@ -28,12 +31,14 @@ public class Movement : MonoBehaviour
 	{
 		Distance = Vector3.Distance(transform.position, OtherGameObject.transform.position);
 	}*/
+
 	private void FixedUpdate()
 	{
-		
+
 		var input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 		input *= MoveSpeed;
 		input = transform.TransformDirection(input);
+
 
 		if (_controller.isGrounded)
 		{
@@ -45,18 +50,25 @@ public class Movement : MonoBehaviour
 			}
 			else
 			{
+				//_moveDirection.y = YDirection;
 				_moveDirection.y = 0;
 			}
+			Debug.Log("Grounded");
 		}
 		else
 		{
 			input.y = _moveDirection.y;
 			_moveDirection = Vector3.Lerp(_moveDirection, input, AirControl * Time.deltaTime);
-			//Debug.Log("Not Grounded");
 		}
-		 _moveDirection.y -= Gravity * Time.deltaTime;
-		_controller.Move(_moveDirection * Time.deltaTime);
-		
+
+		if (!isOnPlatform)// And going up
+		{
+			_moveDirection.y -= Gravity * Time.fixedDeltaTime;
+			MoveSpeed = 0;
+		}
+		_controller.Move(_moveDirection * Time.fixedDeltaTime);
+
+
 	}
 
 }
