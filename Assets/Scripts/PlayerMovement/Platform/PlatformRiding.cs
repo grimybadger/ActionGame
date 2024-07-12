@@ -16,6 +16,7 @@ public class PlatformRiding : MonoBehaviour
 	// Update is called once per frame
 	void FixedUpdate()
 	{
+		
 		var capsulePoint1 = transform.position + new Vector3(0, (controller.height / 2) - controller.radius, 0);
 		var capsulePoint2 = transform.position - new Vector3(0, (controller.height / 2) + controller.radius, 0);
 		Collider[] overLappingColliders = new Collider[10]; //if we encounter more colliders make note here to take this into account
@@ -44,9 +45,9 @@ public class PlatformRiding : MonoBehaviour
 				out direction,
 				out distance
 			);
-			direction.y = 0;
+			//direction.y = 0;
 		 	//Debug.Log($"Distance:{distance}, Direction:{direction}");
-			transform.position += direction * distance;	
+			//transform.position += direction * distance;	
 		}
 		var ray = new Ray(transform.position, Vector3.down);
 		RaycastHit hit;

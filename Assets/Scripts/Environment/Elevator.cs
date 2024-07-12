@@ -54,8 +54,8 @@ public class Elevator : MonoBehaviour
 		//Player.transform.SetParent(this.transform);
 		//Vector3 playerPosY;
 		//Rigidbody rb = gameObject.GetComponent<Rigidbody>();
-		Vector3 direction;
-		float distance;
+		//Vector3 direction;
+		//float distance;
 		//CharacterController cc = Player.GetComponent<CharacterController>();
 		//float verticalSpeed = cc.velocity.y;
 		//Vector3 horizontalVelocity = cc.velocity;

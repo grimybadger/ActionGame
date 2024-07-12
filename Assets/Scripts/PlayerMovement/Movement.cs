@@ -34,7 +34,7 @@ public class Movement : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-
+		
 		var input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 		input *= MoveSpeed;
 		input = transform.TransformDirection(input);

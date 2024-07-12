@@ -41,7 +41,7 @@ public class PlayerStateMachine : MonoBehaviour
 		{
 			//previousPressTime = 2f;
 			previousPressTime -= Time.deltaTime;
-			Debug.Log(previousPressTime);
+			//Debug.Log(previousPressTime);
 
 			if (previousPressTime <= 0)
 			{
