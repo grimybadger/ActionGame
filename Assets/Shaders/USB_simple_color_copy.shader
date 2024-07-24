@@ -1,4 +1,4 @@
-Shader "Unlit/USB_simple_color"
+Shader "Unlit/USB_simple_color_copy"
 {
     Properties
     {
@@ -38,21 +38,29 @@ Shader "Unlit/USB_simple_color"
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque"}
+        Tags {
+                "RenderType"="Opaque"
+                "Queue"="Transparent"
+                "RenderPipeline"="UniversalRenderPipeline"
+             }
         LOD 100
         Cull[_Face]
         Blend SrcAlpha OneMinusSrcAlpha
 
         Pass
         {
-            CGPROGRAM
+            HLSLPROGRAM
 
             #pragma vertex vert
             #pragma fragment frag
             // make fog work
-            #pragma multi_compile_fog
-
-            #include "UnityCG.cginc"
+           // #pragma multi_compile_fog
+           
+           #include "UnityCG.cginc"
+           //#include "HLSLSupport.cginc"
+           //#include "BuiltInPackages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+         
+           //#include "C:\Program Files\Unity\Hub\Editor\2022.3.35f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 
             #pragma shader_feature _ENABLE_ON
             #pragma multi_compile _OPTIONS_OFF _OPTIONS_RED _OPTIONS_BLUE
@@ -85,6 +93,13 @@ Shader "Unlit/USB_simple_color"
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
                 UNITY_TRANSFER_FOG(o,o.vertex);
                 return o;
+                
+                /*
+                v2f o;
+                o.vertex = TransformObjectToHClip(v.vertex);
+                o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+                return o;
+*/
             }
             /*
             void FakeLight_float (in float3 Normal, out float3 Out)
@@ -128,7 +143,7 @@ Shader "Unlit/USB_simple_color"
             }
 
 
-            ENDCG
+           ENDHLSL
         }
     }
 }
